@@ -10,10 +10,10 @@ This is a native Flutter implementation, so it supports all platforms.
 
 At the time of creating this package, there was no available solution that had:
 
-- Smooth and performance-optimized drawing on a wide range of devices
-- Undo and clear functionality
-- Easy save as PNG and preview
-- Fully customizable appearance and size
+- Smooth and performance-optimized drawing on a wide range of devices  
+- Undo and clear functionality  
+- Easy save as PNG and preview  
+- Fully customizable appearance and size  
 
 ## Usage
 
