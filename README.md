@@ -2,7 +2,7 @@
 
 [![pub package](https://img.shields.io/pub/v/draw_my_signature.svg)](https://pub.dev/packages/draw_my_signature)
 
-A Flutter plugin providing a customizable signature pad widget with ability
+A Flutter plugin providing a customizable signature pad widget with the ability
 to set stroke color, stroke width, background color, and save signatures as PNG images.  
 This is a native Flutter implementation, so it supports all platforms.
 
@@ -20,72 +20,79 @@ At the time of creating this package, there was no available solution that had:
 To use this plugin, add `draw_my_signature` as a
 [dependency in your `pubspec.yaml` file](https://pub.dev/packages/draw_my_signature).
 
-## Example
+### Example
 
-Take a look at our example project in the `/example` folder.
+Here is a full example using the `HomePage` widget:
 
 ```dart
-import 'package:flutter/material.dart';
-import 'package:draw_my_signature/draw_my_signature.dart';
 import 'dart:io';
+import 'package:draw_my_signature/draw_my_signature.dart';
+import 'package:flutter/material.dart';
 
-class SignatureExample extends StatefulWidget {
-  const SignatureExample({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<SignatureExample> createState() => _SignatureExampleState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _SignatureExampleState extends State<SignatureExample> {
+class _HomePageState extends State<HomePage> {
   final GlobalKey<SignaturePadState> _signatureKey = GlobalKey<SignaturePadState>();
   File? file;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Draw My Signature Example')),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            SignaturePad(
-              key: _signatureKey,
-              height: 200,
-              strokeColor: Colors.blue,
-              strokeWidth: 3,
-              backgroundColor: Colors.grey[100]!,
-              onSaved: (savedFile) {
-                setState(() => file = savedFile);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Saved to: ${savedFile.path}')),
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(
-                  onPressed: () => _signatureKey.currentState?.undoLastStroke(),
-                  child: const Text('Undo'),
+      appBar: AppBar(
+        backgroundColor: Colors.grey[300],
+        title: const Text('Draw My Signature'),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                ElevatedButton(
-                  onPressed: () => _signatureKey.currentState?.clear(),
-                  child: const Text('Clear'),
+                child: SignaturePad(
+                  key: _signatureKey,
+                  height: 200,
+                  strokeColor: Colors.black,
+                  strokeWidth: 3,
+                  backgroundColor: Colors.grey[100]!,
+                  onSaved: (savedFile) {
+                    setState(() => file = savedFile);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Saved to: ${savedFile.path}')),
+                    );
+                  },
                 ),
-                ElevatedButton(
-                  onPressed: () => _signatureKey.currentState?.save(),
-                  child: const Text('Save'),
-                ),
-              ],
-            ),
-            const SizedBox(height: 20),
-            if (file != null)
-              Image.file(
-                file!,
-                height: 150,
               ),
-          ],
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => _signatureKey.currentState?.undoLastStroke(),
+                    child: const Text('Undo', style: TextStyle(color: Colors.black)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => _signatureKey.currentState?.clear(),
+                    child: const Text('Clear', style: TextStyle(color: Colors.black)),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => _signatureKey.currentState?.save(),
+                    child: const Text('Save', style: TextStyle(color: Colors.black)),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              if (file != null) Image.file(file!, height: 150),
+            ],
+          ),
         ),
       ),
     );
