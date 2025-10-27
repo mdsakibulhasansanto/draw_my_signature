@@ -98,12 +98,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-## Example Preview
-
-Here’s how the signature pad looks in action 👇
-
-![Example Screenshot](https://raw.githubusercontent.com/mdsakibulhasansanto/draw_my_signature/main/example/example.jpg)
-
-
-
