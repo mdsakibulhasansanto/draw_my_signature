@@ -2,23 +2,21 @@
 
 [![pub package](https://img.shields.io/pub/v/draw_my_signature.svg)](https://pub.dev/packages/draw_my_signature)
 
-A Flutter plugin providing a customizable signature pad widget with the ability
-to set stroke color, stroke width, background color, and save signatures as PNG images.  
+A Flutter plugin providing a customizable signature pad widget with the ability to set stroke color, stroke width, background color, and save signatures as PNG images.  
 This is a native Flutter implementation, so it supports all platforms.
 
 ## Why
 
 At the time of creating this package, there was no available solution that had:
 
-- Smooth and performance-optimized drawing on a wide range of devices  
-- Undo and clear functionality  
-- Easy save as PNG and preview  
-- Fully customizable appearance and size  
+- Smooth and performance-optimized drawing on a wide range of devices
+- Undo and clear functionality
+- Easy save as PNG and preview
+- Fully customizable appearance and size
 
 ## Usage
 
-To use this plugin, add `draw_my_signature` as a
-[dependency in your `pubspec.yaml` file](https://pub.dev/packages/draw_my_signature).
+To use this plugin, add `draw_my_signature` as a dependency in your `pubspec.yaml` file.
 
 ### Example
 
