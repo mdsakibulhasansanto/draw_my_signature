@@ -18,6 +18,13 @@ At the time of creating this package, there was no available solution that had:
 
 To use this plugin, add `draw_my_signature` as a dependency in your `pubspec.yaml` file.
 
+### Example Preview
+
+Here’s how the signature pad looks in action 👇
+
+![Example Screenshot](https://raw.githubusercontent.com/mdsakibulhasansanto/draw_my_signature/main/example/example.jpg)
+
+
 ### Example
 
 Here is a full example using the `HomePage` widget:
